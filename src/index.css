@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+body {
+  @apply bg-dark text-gray-100 font-inter;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  @apply px-4 mx-auto max-w-7xl;
+}
+
+.btn {
+  @apply px-6 py-3 font-medium rounded-md transition-all duration-200;
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-blue-700 text-white;
+}
+
+.btn-secondary {
+  @apply bg-transparent border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white;
+}
+
+.section-title {
+  @apply text-3xl font-bold mb-6 text-white;
+}
+
+.section-subtitle {
+  @apply text-xl text-gray-400 mb-10 max-w-3xl;
+}

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalShopper - Trading Signals for RIAs and Serious Traders</title>
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Import Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Import Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'ibm-plex': ['"IBM Plex Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#3B82F6', // Blue accent color
+                        'dark': '#111827',
+                        'dark-lighter': '#1F2937',
+                        'light-gray': '#F3F4F6',
+                    }
+                },
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #F3F4F6;
+        }
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 80rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background-color: #3B82F6;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #2563EB;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid #4B5563;
+            color: #D1D5DB;
+        }
+        .btn-secondary:hover {
+            border-color: #9CA3AF;
+            color: white;
+        }
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #9CA3AF;
+            margin-bottom: 2.5rem;
+            max-width: 48rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="py-4 border-b border-gray-800">
+        <div class="container flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-primary text-2xl">SignalShopper</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#signals" class="text-gray-300 hover:text-white">Signal Types</a>
+                <a href="#professionals" class="text-gray-300 hover:text-white">For Professionals</a>
+                <a href="#samples" class="text-gray-300 hover:text-white">Signal Samples</a>
+                <a href="#pricing" class="text-gray-300 hover:text-white">Pricing</a>
+            </div>
+            <div>
+                <a href="#contact" class="btn btn-primary">Start Free Trial</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 border-b border-gray-800">
+        <div class="container">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                    Actionable Trading Signals Built for RIAs and Professional Traders
+                </h1>
+                <p class="text-xl text-gray-400 mb-10">
+                    Institutional-grade market intelligence delivered with speed and precision. Actionable signals backed by quantitative models and expert analysis.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#pricing" class="btn btn-primary flex items-center justify-center gap-2">
+                        Start Free Trial <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#samples" class="btn btn-secondary flex items-center justify-center gap-2">
+                        See Signal Samples <i class="far fa-file-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Signal Types Section -->
+    <section id="signals" class="py-20 border-b border-gray-800">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Two Powerful Signal Categories</h2>
+                <p class="section-subtitle mx-auto">
+                    Our signals combine the precision of quantitative models with the context of expert analysis
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Quantitative Signals -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-900/30 p-3 rounded-lg mr-4">
+                            <i class="fas fa-chart-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Quantitative Signals</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Data-driven signals derived from our proprietary algorithms and statistical models. Precision timing with clear entry and exit points.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Multi-factor models with 15+ years of backtested data</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Daily and weekly signals with 70%+ historical accuracy</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Automated delivery via email, SMS, or API integration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Covers equities, ETFs, options, and futures markets</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Qualitative Signals -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-900/30 p-3 rounded-lg mr-4">
+                            <i class="far fa-lightbulb text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Qualitative Signals</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Expert analysis and market insights from our team of seasoned analysts with institutional experience. Context-rich market intelligence.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Weekly macro market analysis and sector rotations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Event-driven opportunities with detailed rationales</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Thematic investment ideas with 6-18 month horizons</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Risk management frameworks and position sizing guides</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Designed for Professionals Section -->
+    <section id="professionals" class="py-20 border-b border-gray-800">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Designed for Financial Professionals</h2>
+                <p class="section-subtitle mx-auto">
+                    Tailored solutions for RIAs and serious traders with specific needs and compliance requirements
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- For RIAs -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-900/30 p-3 rounded-lg mr-4">
+                            <i class="far fa-building text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">For Registered Investment Advisors</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Institutional-grade signals that integrate with your existing investment process and meet compliance requirements.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Compliance-friendly documentation and audit trails</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Multi-user access with custom permission levels</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>White-labeled reports for client presentations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>API integration with popular portfolio management systems</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- For Traders -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-900/30 p-3 rounded-lg mr-4">
+                            <i class="fas fa-user-tie text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">For Serious Traders</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        High-conviction trading signals with precise timing and clear risk parameters for active market participants.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Real-time alerts via mobile app, SMS, or email</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Detailed entry, exit, and stop-loss parameters</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Options strategy recommendations for each signal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Priority access to analyst Q&A sessions</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Signal Feed Section -->
+    <section id="samples" class="py-20 border-b border-gray-800">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Recent Signal Examples</h2>
+                <p class="section-subtitle mx-auto">
+                    A sample of our most recent trading signals and their performance
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Signal 1 -->
+                <div class="bg-dark-lighter p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <span class="text-xl font-bold text-white">AAPL</span>
+                            <span class="ml-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">BUY</span>
+                        </div>
+                        <div class="text-gray-400 flex items-center">
+                            <i class="far fa-clock mr-1"></i> <span class="text-sm">2 days ago</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-3 text-sm">
+                        Technical breakout with increasing volume and positive momentum divergence.
+                    </p>
+                    <div class="flex justify-between text-sm">
+                        <span>Entry: <span class="text-white">$178.25</span></span>
+                        <span>Target: <span class="text-white">$195.00</span></span>
+                        <span>Stop: <span class="text-white">$170.50</span></span>
+                    </div>
+                </div>
+                
+                <!-- Signal 2 -->
+                <div class="bg-dark-lighter p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <span class="text-xl font-bold text-white">MSFT</span>
+                            <span class="ml-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">BUY</span>
+                        </div>
+                        <div class="text-gray-400 flex items-center">
+                            <i class="far fa-clock mr-1"></i> <span class="text-sm">1 week ago</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-3 text-sm">
+                        Strong earnings beat with raised guidance and accelerating cloud revenue growth.
+                    </p>
+                    <div class="flex justify-between text-sm">
+                        <span>Entry: <span class="text-white">$332.80</span></span>
+                        <span>Target: <span class="text-white">$365.00</span></span>
+                        <span>Stop: <span class="text-white">$320.00</span></span>
+                    </div>
+                </div>
+                
+                <!-- Signal 3 -->
+                <div class="bg-dark-lighter p-6 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <span class="text-xl font-bold text-white">XLE</span>
+                            <span class="ml-2 px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded">SELL</span>
+                        </div>
+                        <div class="text-gray-400 flex items-center">
+                            <i class="far fa-clock mr-1"></i> <span class="text-sm">3 days ago</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-3 text-sm">
+                        Bearish divergence on RSI with resistance at key moving averages and declining volume.
+                    </p>
+                    <div class="flex justify-between text-sm">
+                        <span>Entry: <span class="text-white">$87.50</span></span>
+                        <span>Target: <span class="text-white">$80.00</span></span>
+                        <span>Stop: <span class="text-white">$90.25</span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#pricing" class="btn btn-primary">Access All Signals</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 border-b border-gray-800">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle mx-auto">
+                    Choose the plan that fits your trading style and investment needs
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Monthly Plan -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-white mb-2">Monthly</h3>
+                    <div class="text-primary text-4xl font-bold mb-1">$199</div>
+                    <p class="text-gray-400 mb-6">per month</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Full access to all signal types</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Real-time alerts via email and SMS</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Weekly market analysis reports</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>7-day free trial</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary w-full block text-center">Start Free Trial</a>
+                </div>
+                
+                <!-- Quarterly Plan -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-primary transition-all duration-300 relative">
+                    <div class="absolute top-0 right-0 bg-primary text-white text-xs px-3 py-1 rounded-bl-lg rounded-tr-lg font-medium">POPULAR</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Quarterly</h3>
+                    <div class="text-primary text-4xl font-bold mb-1">$499</div>
+                    <p class="text-gray-400 mb-6">per quarter <span class="text-green-400">(Save 16%)</span></p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Everything in Monthly plan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Priority email and phone support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Monthly strategy consultation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>14-day free trial</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary w-full block text-center">Start Free Trial</a>
+                </div>
+                
+                <!-- Annual Plan -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-gray-800 hover:border-primary transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-white mb-2">Annual</h3>
+                    <div class="text-primary text-4xl font-bold mb-1">$1,799</div>
+                    <p class="text-gray-400 mb-6">per year <span class="text-green-400">(Save 25%)</span></p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Everything in Quarterly plan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>API access for automated trading</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>Quarterly performance review</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                            <span>30-day free trial</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary w-full block text-center">Start Free Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 border-b border-gray-800">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Trusted by Professional Traders</h2>
+                <p class="section-subtitle mx-auto">
+                    Hear what our subscribers say about our signals and service
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="text-white font-medium">Michael R.</h4>
+                            <p class="text-gray-400 text-sm">Independent Trader, 3 years subscriber</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "The quantitative signals have been a game-changer for my trading strategy. The clear entry and exit points remove emotion from my decision-making process."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="text-white font-medium">Sarah J.</h4>
+                            <p class="text-gray-400 text-sm">RIA Firm Partner, 2 years subscriber</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "The compliance documentation that comes with each signal has made it easy to incorporate these recommendations into our client portfolios while meeting regulatory requirements."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-dark-lighter p-8 rounded-lg border border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="text-white font-medium">David T.</h4>
+                            <p class="text-gray-400 text-sm">Hedge Fund Analyst, 1 year subscriber</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "The macro analysis provided alongside the quantitative signals gives me the context I need to understand market movements and adjust my strategy accordingly."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-16 bg-dark-lighter">
+        <div class="container">
+            <div class="grid md:grid-cols-4 gap-10">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-6">SignalShopper</h3>
+                    <p class="text-gray-400 mb-6">
+                        Professional trading signals for RIAs and serious traders. High-conviction market intelligence for better investment decisions.
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-white mb-6">Quick Links</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#signals" class="text-gray-400 hover:text-primary">Signal Types</a></li>
+                        <li><a href="#professionals" class="text-gray-400 hover:text-primary">For Professionals</a></li>
+                        <li><a href="#samples" class="text-gray-400 hover:text-primary">Signal Samples</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-primary">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-white mb-6">Legal</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-primary">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary">Disclaimer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary">Risk Disclosure</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-white mb-6">Contact Us</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">info@signalshopper.com</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8">
+                        <a href="#" class="btn btn-primary block text-center">Book a Demo Call</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-500">&copy; <script>document.write(new Date().getFullYear())</script> SignalShopper. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
