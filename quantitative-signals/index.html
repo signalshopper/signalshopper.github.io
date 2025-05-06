@@ -127,7 +127,8 @@
         }
         .delivery-time {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
         }
         .time-select {
             background-color: #374151;
@@ -136,7 +137,8 @@
             border-radius: 4px;
             padding: 8px 12px;
             font-size: 0.875rem;
-            margin-right: 10px;
+            margin-bottom: 10px;
+            width: 100%;
         }
         .time-select:focus {
             outline: none;
@@ -151,9 +153,30 @@
             cursor: pointer;
             font-size: 0.875rem;
             transition: background-color 0.3s ease;
+            width: 100%;
         }
         .save-btn:hover {
             background-color: #059669;
+        }
+        
+        .add-delivery-btn {
+            margin-top: 10px;
+            background: none;
+            border: 1px dashed #4B5563;
+            color: #9CA3AF;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .add-delivery-btn:hover {
+            background-color: #1F2937;
+            color: #3B82F6;
+            border-color: #3B82F6;
         }
         .generate-btn {
             background-color: #3B82F6;
@@ -334,6 +357,9 @@
                                 <option value="1000">10:00 AM EST</option>
                             </select>
                             <button class="save-btn">Save</button>
+                            <button class="add-delivery-btn">
+                                <i class="fas fa-plus"></i> Add additional delivery
+                            </button>
                         </div>
                     </div>
 
@@ -380,6 +406,9 @@
                                 <option value="1000">10:00 AM EST</option>
                             </select>
                             <button class="save-btn">Save</button>
+                            <button class="add-delivery-btn">
+                                <i class="fas fa-plus"></i> Add additional delivery
+                            </button>
                         </div>
                     </div>
 
@@ -426,6 +455,9 @@
                                 <option value="1000">10:00 AM EST</option>
                             </select>
                             <button class="save-btn">Save</button>
+                            <button class="add-delivery-btn">
+                                <i class="fas fa-plus"></i> Add additional delivery
+                            </button>
                         </div>
                     </div>
 
@@ -472,6 +504,9 @@
                                 <option value="1000">10:00 AM EST</option>
                             </select>
                             <button class="save-btn">Save</button>
+                            <button class="add-delivery-btn">
+                                <i class="fas fa-plus"></i> Add additional delivery
+                            </button>
                         </div>
                     </div>
 
@@ -518,10 +553,209 @@
                                 <option value="1000" selected>10:00 AM EST</option>
                             </select>
                             <button class="save-btn">Save</button>
+                            <button class="add-delivery-btn">
+                                <i class="fas fa-plus"></i> Add additional delivery
+                            </button>
                         </div>
                     </div>
 
                     <button class="generate-btn" onclick="showGeneratingModal('Pricing Engine 5 Buys')">
+                        <i class="fas fa-bolt"></i> Generate Now
+                    </button>
+                </div>
+            </div>
+            <!-- One Day Expected Move Signal -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-ruler"></i>
+                        One Day Expected Move
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <div class="signal-property">
+                        <span class="property-label">API Key</span>
+                        <div class="property-value">
+                            <div class="api-key">sk_exp_move_7h93kd82j</div>
+                            <button class="copy-btn" onclick="copyToClipboard('sk_exp_move_7h93kd82j')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Latest Signal</span>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Expected+Move+Chart" alt="One Day Expected Move Chart">
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Delivery Time</span>
+                        <div class="delivery-time">
+                            <select class="time-select">
+                                <option value="0800">8:00 AM EST</option>
+                                <option value="0830">8:30 AM EST</option>
+                                <option value="0900" selected>9:00 AM EST</option>
+                                <option value="0930">9:30 AM EST</option>
+                                <option value="1000">10:00 AM EST</option>
+                            </select>
+                            <button class="save-btn">Save</button>
+                            <button class="add-delivery-btn">
+                                <i class="fas fa-plus"></i> Add additional delivery
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="showGeneratingModal('One Day Expected Move')">
+                        <i class="fas fa-bolt"></i> Generate Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trade Entry vs Implied Volatility Signal -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-exchange-alt"></i>
+                        Trade Entry vs Implied Volatility
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <div class="signal-property">
+                        <span class="property-label">API Key</span>
+                        <div class="property-value">
+                            <div class="api-key">sk_entry_iv_9k37fd2l</div>
+                            <button class="copy-btn" onclick="copyToClipboard('sk_entry_iv_9k37fd2l')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Latest Signal</span>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Trade+Entry+vs+IV" alt="Trade Entry vs Implied Volatility Chart">
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Delivery Time</span>
+                        <div class="delivery-time">
+                            <select class="time-select">
+                                <option value="0800">8:00 AM EST</option>
+                                <option value="0830">8:30 AM EST</option>
+                                <option value="0900" selected>9:00 AM EST</option>
+                                <option value="0930">9:30 AM EST</option>
+                                <option value="1000">10:00 AM EST</option>
+                            </select>
+                            <button class="save-btn">Save</button>
+                            <button class="add-delivery-btn">
+                                <i class="fas fa-plus"></i> Add additional delivery
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="showGeneratingModal('Trade Entry vs Implied Volatility')">
+                        <i class="fas fa-bolt"></i> Generate Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Option Volatility Forecast Signal -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Option Volatility Forecast
+                    </h2>
+                    <p class="signal-subtitle">Historical Realised Volatility</p>
+                </div>
+                <div class="signal-body">
+                    <div class="signal-property">
+                        <span class="property-label">API Key</span>
+                        <div class="property-value">
+                            <div class="api-key">sk_vol_forecast_3j92kd8</div>
+                            <button class="copy-btn" onclick="copyToClipboard('sk_vol_forecast_3j92kd8')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Latest Signal</span>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Volatility+Forecast" alt="Option Volatility Forecast Chart">
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Delivery Time</span>
+                        <div class="delivery-time">
+                            <select class="time-select">
+                                <option value="0800">8:00 AM EST</option>
+                                <option value="0830">8:30 AM EST</option>
+                                <option value="0900" selected>9:00 AM EST</option>
+                                <option value="0930">9:30 AM EST</option>
+                                <option value="1000">10:00 AM EST</option>
+                            </select>
+                            <button class="save-btn">Save</button>
+                            <button class="add-delivery-btn">
+                                <i class="fas fa-plus"></i> Add additional delivery
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="showGeneratingModal('Option Volatility Forecast')">
+                        <i class="fas fa-bolt"></i> Generate Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trade Entry vs Implied Volatility Rank Signal -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-sort-amount-down"></i>
+                        Trade Entry vs IV Rank
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <div class="signal-property">
+                        <span class="property-label">API Key</span>
+                        <div class="property-value">
+                            <div class="api-key">sk_iv_rank_5k28jf9l</div>
+                            <button class="copy-btn" onclick="copyToClipboard('sk_iv_rank_5k28jf9l')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Latest Signal</span>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=IV+Rank+Analysis" alt="Trade Entry vs IV Rank Chart">
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Delivery Time</span>
+                        <div class="delivery-time">
+                            <select class="time-select">
+                                <option value="0800">8:00 AM EST</option>
+                                <option value="0830">8:30 AM EST</option>
+                                <option value="0900" selected>9:00 AM EST</option>
+                                <option value="0930">9:30 AM EST</option>
+                                <option value="1000">10:00 AM EST</option>
+                            </select>
+                            <button class="save-btn">Save</button>
+                            <button class="add-delivery-btn">
+                                <i class="fas fa-plus"></i> Add additional delivery
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="showGeneratingModal('Trade Entry vs IV Rank')">
                         <i class="fas fa-bolt"></i> Generate Now
                     </button>
                 </div>

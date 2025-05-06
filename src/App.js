@@ -123,11 +123,11 @@ function App() {
                 </li>
                 <li className="flex items-start">
                   <FaCheck className="text-primary mt-1 mr-2" />
-                  <span>Thematic investment ideas with 6-18 month horizons</span>
+                  <span>Thematic investment ideas with short to middle term horizons</span>
                 </li>
                 <li className="flex items-start">
                   <FaCheck className="text-primary mt-1 mr-2" />
-                  <span>Risk management frameworks and position sizing guides</span>
+                  <span>Risk management frameworks and position sizing guides (Today's Optional Due Diligence)</span>
                 </li>
               </ul>
             </div>
