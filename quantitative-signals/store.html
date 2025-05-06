@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalShopper - Signal Store</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <!-- Import Google Fonts to match main site -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Import Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            color: #F3F4F6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        p.subtitle {
+            color: #9CA3AF;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            color: #60A5FA;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #374151;
+            margin-bottom: 30px;
+        }
+        .tab {
+            padding: 12px 24px;
+            font-weight: 500;
+            color: #9CA3AF;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .tab:hover {
+            color: white;
+        }
+        .tab.active {
+            color: #3B82F6;
+            border-bottom-color: #3B82F6;
+        }
+        .signal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        .signal-card {
+            background-color: #1F2937;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+        }
+        .signal-card:hover {
+            border-color: #3B82F6;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .signal-header {
+            padding: 20px;
+            border-bottom: 1px solid #374151;
+        }
+        .signal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        .signal-title i {
+            color: #3B82F6;
+            margin-right: 10px;
+        }
+        .signal-body {
+            padding: 20px;
+        }
+        .signal-description {
+            color: #D1D5DB;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .signal-property {
+            margin-bottom: 15px;
+        }
+        .property-label {
+            display: block;
+            font-size: 0.875rem;
+            color: #9CA3AF;
+            margin-bottom: 5px;
+        }
+        .price-tag {
+            background-color: #374151;
+            color: #F3F4F6;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .price-tag.highlight {
+            background-color: #065F46;
+            color: white;
+        }
+        .subscribe-btn {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .subscribe-btn i {
+            margin-right: 8px;
+        }
+        .subscribe-btn:hover {
+            background-color: #2563EB;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .badge.popular {
+            background-color: #DC2626;
+            color: white;
+        }
+        .badge.new {
+            background-color: #059669;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">← Back to SignalShopper</a>
+            <h1>Quantitative Signals Dashboard</h1>
+            <p class="subtitle">Access and manage your data-driven trading signals</p>
+        </header>
+
+        <div class="tabs">
+            <a href="index.html" class="tab">My Signals</a>
+            <a href="store.html" class="tab active">Signal Store</a>
+        </div>
+
+        <div class="signal-grid">
+            <!-- Dealer Gamma Signal -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-chart-line"></i>
+                        Dealer Gamma
+                        <span class="badge popular">Popular</span>
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <p class="signal-description">
+                        Track market maker hedging flows with our proprietary Dealer Gamma model. Identifies key levels where market makers must adjust hedges, creating potential price inflection points.
+                    </p>
+
+                    <div class="signal-property">
+                        <span class="property-label">Daily Delivery</span>
+                        <div class="price-tag highlight">$29/day</div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Instant Generation</span>
+                        <div class="price-tag">$49/signal</div>
+                    </div>
+
+                    <button class="subscribe-btn">
+                        <i class="fas fa-plus-circle"></i> Add to My Signals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pricing Engine Heatmap -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-fire"></i>
+                        Pricing Engine Heatmap
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <p class="signal-description">
+                        Visualize market sentiment across sectors with our proprietary heatmap. Color-coded visualization shows relative strength and weakness across major market sectors and industries.
+                    </p>
+
+                    <div class="signal-property">
+                        <span class="property-label">Daily Delivery</span>
+                        <div class="price-tag highlight">$39/day</div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Instant Generation</span>
+                        <div class="price-tag">$59/signal</div>
+                    </div>
+
+                    <button class="subscribe-btn">
+                        <i class="fas fa-plus-circle"></i> Add to My Signals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pricing Engine Top 10 -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-trophy"></i>
+                        Pricing Engine Top 10
+                        <span class="badge popular">Popular</span>
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <p class="signal-description">
+                        Get our algorithmic top 10 trading opportunities for the day. Multi-factor model combines momentum, value, and sentiment indicators to identify highest probability setups.
+                    </p>
+
+                    <div class="signal-property">
+                        <span class="property-label">Daily Delivery</span>
+                        <div class="price-tag highlight">$49/day</div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Instant Generation</span>
+                        <div class="price-tag">$79/signal</div>
+                    </div>
+
+                    <button class="subscribe-btn">
+                        <i class="fas fa-plus-circle"></i> Add to My Signals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pricing Engine 5 Sells -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-arrow-down"></i>
+                        Pricing Engine 5 Sells
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <p class="signal-description">
+                        Identify top 5 short opportunities based on our proprietary pricing engine. Combines technical breakdown patterns with fundamental overvaluation metrics and negative sentiment shifts.
+                    </p>
+
+                    <div class="signal-property">
+                        <span class="property-label">Daily Delivery</span>
+                        <div class="price-tag highlight">$35/day</div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Instant Generation</span>
+                        <div class="price-tag">$55/signal</div>
+                    </div>
+
+                    <button class="subscribe-btn">
+                        <i class="fas fa-plus-circle"></i> Add to My Signals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pricing Engine 5 Buys -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-arrow-up"></i>
+                        Pricing Engine 5 Buys
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <p class="signal-description">
+                        Discover top 5 long opportunities from our proprietary pricing engine. Identifies stocks with bullish technical patterns, fundamental value, and positive sentiment catalysts.
+                    </p>
+
+                    <div class="signal-property">
+                        <span class="property-label">Daily Delivery</span>
+                        <div class="price-tag highlight">$35/day</div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Instant Generation</span>
+                        <div class="price-tag">$55/signal</div>
+                    </div>
+
+                    <button class="subscribe-btn">
+                        <i class="fas fa-plus-circle"></i> Add to My Signals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Options Flow Analysis -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-exchange-alt"></i>
+                        Options Flow Analysis
+                        <span class="badge new">New</span>
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <p class="signal-description">
+                        Track institutional options activity with our options flow analysis. Identifies unusual options activity, large block trades, and significant changes in open interest across major stocks.
+                    </p>
+
+                    <div class="signal-property">
+                        <span class="property-label">Daily Delivery</span>
+                        <div class="price-tag highlight">$45/day</div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Instant Generation</span>
+                        <div class="price-tag">$75/signal</div>
+                    </div>
+
+                    <button class="subscribe-btn">
+                        <i class="fas fa-plus-circle"></i> Add to My Signals
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple JavaScript for tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
