@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalShopper - Quantitative Signals</title>
+    <!-- Import Google Fonts to match main site -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Import Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            color: #F3F4F6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        p.subtitle {
+            color: #9CA3AF;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            color: #60A5FA;
+        }
+        .signal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        .signal-card {
+            background-color: #1F2937;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #374151;
+            transition: all 0.3s ease;
+        }
+        .signal-card:hover {
+            border-color: #3B82F6;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .signal-header {
+            padding: 20px;
+            border-bottom: 1px solid #374151;
+        }
+        .signal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        .signal-title i {
+            color: #3B82F6;
+            margin-right: 10px;
+        }
+        .signal-body {
+            padding: 20px;
+        }
+        .signal-property {
+            margin-bottom: 15px;
+        }
+        .property-label {
+            display: block;
+            font-size: 0.875rem;
+            color: #9CA3AF;
+            margin-bottom: 5px;
+        }
+        .property-value {
+            display: flex;
+            align-items: center;
+        }
+        .api-key {
+            background-color: #374151;
+            color: #F3F4F6;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.875rem;
+            position: relative;
+            width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .copy-btn {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: background-color 0.3s ease;
+        }
+        .copy-btn:hover {
+            background-color: #2563EB;
+        }
+        .delivery-time {
+            display: flex;
+            align-items: center;
+        }
+        .time-select {
+            background-color: #374151;
+            color: #F3F4F6;
+            border: 1px solid #4B5563;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 0.875rem;
+            margin-right: 10px;
+        }
+        .time-select:focus {
+            outline: none;
+            border-color: #3B82F6;
+        }
+        .save-btn {
+            background-color: #10B981;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: background-color 0.3s ease;
+        }
+        .save-btn:hover {
+            background-color: #059669;
+        }
+        .generate-btn {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .generate-btn i {
+            margin-right: 8px;
+        }
+        .generate-btn:hover {
+            background-color: #2563EB;
+        }
+        .image-preview {
+            background-color: #374151;
+            border-radius: 4px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .image-preview.empty {
+            color: #9CA3AF;
+            font-size: 0.875rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #1F2937;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            padding: 30px;
+            position: relative;
+            border: 1px solid #374151;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #9CA3AF;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-modal:hover {
+            color: white;
+        }
+        .modal-title {
+            margin-top: 0;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .modal-body {
+            margin-bottom: 20px;
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .modal-btn.primary {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            margin-left: 10px;
+        }
+        .modal-btn.primary:hover {
+            background-color: #2563EB;
+        }
+        .modal-btn.secondary {
+            background-color: transparent;
+            color: #F3F4F6;
+            border: 1px solid #4B5563;
+        }
+        .modal-btn.secondary:hover {
+            background-color: #374151;
+        }
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #3B82F6;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">← Back to SignalShopper</a>
+            <h1>Quantitative Signals Dashboard</h1>
+            <p class="subtitle">Access and manage your data-driven trading signals</p>
+        </header>
+
+        <div class="signal-grid">
+            <!-- Dealer Gamma Signal -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-chart-line"></i>
+                        Dealer Gamma
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <div class="signal-property">
+                        <span class="property-label">API Key</span>
+                        <div class="property-value">
+                            <div class="api-key">sk_gamma_8f72hd92jd82h</div>
+                            <button class="copy-btn" onclick="copyToClipboard('sk_gamma_8f72hd92jd82h')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Latest Signal</span>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Dealer+Gamma+Chart" alt="Dealer Gamma Chart">
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Delivery Time</span>
+                        <div class="delivery-time">
+                            <select class="time-select">
+                                <option value="0800">8:00 AM EST</option>
+                                <option value="0830">8:30 AM EST</option>
+                                <option value="0900" selected>9:00 AM EST</option>
+                                <option value="0930">9:30 AM EST</option>
+                                <option value="1000">10:00 AM EST</option>
+                            </select>
+                            <button class="save-btn">Save</button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="showGeneratingModal('Dealer Gamma')">
+                        <i class="fas fa-bolt"></i> Generate Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pricing Engine Heatmap -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-fire"></i>
+                        Pricing Engine Heatmap
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <div class="signal-property">
+                        <span class="property-label">API Key</span>
+                        <div class="property-value">
+                            <div class="api-key">sk_heatmap_9f83jd01kd</div>
+                            <button class="copy-btn" onclick="copyToClipboard('sk_heatmap_9f83jd01kd')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Latest Signal</span>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Pricing+Heatmap" alt="Pricing Engine Heatmap">
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Delivery Time</span>
+                        <div class="delivery-time">
+                            <select class="time-select">
+                                <option value="0800">8:00 AM EST</option>
+                                <option value="0830" selected>8:30 AM EST</option>
+                                <option value="0900">9:00 AM EST</option>
+                                <option value="0930">9:30 AM EST</option>
+                                <option value="1000">10:00 AM EST</option>
+                            </select>
+                            <button class="save-btn">Save</button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="showGeneratingModal('Pricing Engine Heatmap')">
+                        <i class="fas fa-bolt"></i> Generate Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pricing Engine Top 10 -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-trophy"></i>
+                        Pricing Engine Top 10
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <div class="signal-property">
+                        <span class="property-label">API Key</span>
+                        <div class="property-value">
+                            <div class="api-key">sk_top10_7d92jd82jd8</div>
+                            <button class="copy-btn" onclick="copyToClipboard('sk_top10_7d92jd82jd8')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Latest Signal</span>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Top+10+Signals" alt="Pricing Engine Top 10">
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Delivery Time</span>
+                        <div class="delivery-time">
+                            <select class="time-select">
+                                <option value="0800">8:00 AM EST</option>
+                                <option value="0830">8:30 AM EST</option>
+                                <option value="0900">9:00 AM EST</option>
+                                <option value="0930" selected>9:30 AM EST</option>
+                                <option value="1000">10:00 AM EST</option>
+                            </select>
+                            <button class="save-btn">Save</button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="showGeneratingModal('Pricing Engine Top 10')">
+                        <i class="fas fa-bolt"></i> Generate Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pricing Engine 5 Sells -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-arrow-down"></i>
+                        Pricing Engine 5 Sells
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <div class="signal-property">
+                        <span class="property-label">API Key</span>
+                        <div class="property-value">
+                            <div class="api-key">sk_sells_6f92jd82h5s</div>
+                            <button class="copy-btn" onclick="copyToClipboard('sk_sells_6f92jd82h5s')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Latest Signal</span>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Top+5+Sells" alt="Pricing Engine 5 Sells">
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Delivery Time</span>
+                        <div class="delivery-time">
+                            <select class="time-select">
+                                <option value="0800" selected>8:00 AM EST</option>
+                                <option value="0830">8:30 AM EST</option>
+                                <option value="0900">9:00 AM EST</option>
+                                <option value="0930">9:30 AM EST</option>
+                                <option value="1000">10:00 AM EST</option>
+                            </select>
+                            <button class="save-btn">Save</button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="showGeneratingModal('Pricing Engine 5 Sells')">
+                        <i class="fas fa-bolt"></i> Generate Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pricing Engine 5 Buys -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-arrow-up"></i>
+                        Pricing Engine 5 Buys
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <div class="signal-property">
+                        <span class="property-label">API Key</span>
+                        <div class="property-value">
+                            <div class="api-key">sk_buys_5d92jd82h4b</div>
+                            <button class="copy-btn" onclick="copyToClipboard('sk_buys_5d92jd82h4b')">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Latest Signal</span>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Top+5+Buys" alt="Pricing Engine 5 Buys">
+                        </div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Delivery Time</span>
+                        <div class="delivery-time">
+                            <select class="time-select">
+                                <option value="0800">8:00 AM EST</option>
+                                <option value="0830">8:30 AM EST</option>
+                                <option value="0900">9:00 AM EST</option>
+                                <option value="0930">9:30 AM EST</option>
+                                <option value="1000" selected>10:00 AM EST</option>
+                            </select>
+                            <button class="save-btn">Save</button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="showGeneratingModal('Pricing Engine 5 Buys')">
+                        <i class="fas fa-bolt"></i> Generate Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generating Signal Modal -->
+    <div id="generatingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title">Generating Signal</h2>
+            <div class="modal-body">
+                <p>Generating <span id="signalName">signal</span>. This may take a few moments...</p>
+                <div id="generationStatus" style="margin-top: 20px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div class="loading-spinner" id="fetchingSpinner" style="display: inline-block;"></div>
+                        <span id="fetchingStatus">Fetching market data...</span>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div class="loading-spinner" id="processingSpinner"></div>
+                        <span id="processingStatus">Processing signal algorithms</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div class="loading-spinner" id="deliveringSpinner"></div>
+                        <span id="deliveringStatus">Delivering to your email</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
+                <button class="modal-btn primary" id="viewSignalBtn" style="display: none;">View Signal</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('API key copied to clipboard!');
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        function showGeneratingModal(signalName) {
+            document.getElementById('signalName').textContent = signalName;
+            document.getElementById('generatingModal').style.display = 'flex';
+            
+            // Reset status
+            document.getElementById('fetchingSpinner').style.display = 'inline-block';
+            document.getElementById('processingSpinner').style.display = 'none';
+            document.getElementById('deliveringSpinner').style.display = 'none';
+            document.getElementById('fetchingStatus').style.color = '#F3F4F6';
+            document.getElementById('processingStatus').style.color = '#9CA3AF';
+            document.getElementById('deliveringStatus').style.color = '#9CA3AF';
+            document.getElementById('viewSignalBtn').style.display = 'none';
+            
+            // Simulate the generation process
+            setTimeout(() => {
+                document.getElementById('fetchingStatus').style.color = '#10B981';
+                document.getElementById('fetchingSpinner').style.display = 'none';
+                document.getElementById('fetchingStatus').innerHTML = 'Fetching market data <i class="fas fa-check"></i>';
+                document.getElementById('processingSpinner').style.display = 'inline-block';
+                document.getElementById('processingStatus').style.color = '#F3F4F6';
+                
+                setTimeout(() => {
+                    document.getElementById('processingStatus').style.color = '#10B981';
+                    document.getElementById('processingSpinner').style.display = 'none';
+                    document.getElementById('processingStatus').innerHTML = 'Processing signal algorithms <i class="fas fa-check"></i>';
+                    document.getElementById('deliveringSpinner').style.display = 'inline-block';
+                    document.getElementById('deliveringStatus').style.color = '#F3F4F6';
+                    
+                    setTimeout(() => {
+                        document.getElementById('deliveringStatus').style.color = '#10B981';
+                        document.getElementById('deliveringSpinner').style.display = 'none';
+                        document.getElementById('deliveringStatus').innerHTML = 'Delivering to your email <i class="fas fa-check"></i>';
+                        document.getElementById('viewSignalBtn').style.display = 'block';
+                    }, 1500);
+                }, 2000);
+            }, 1500);
+        }
+
+        function closeModal() {
+            document.getElementById('generatingModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('generatingModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
