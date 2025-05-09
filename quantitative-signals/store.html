@@ -169,6 +169,29 @@
             background-color: #059669;
             color: white;
         }
+        .store-header {
+            background-color: #1F2937;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            border: 1px solid #374151;
+        }
+        .store-info {
+            color: #D1D5DB;
+            font-size: 1rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .agreement-link {
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .agreement-link:hover {
+            color: #60A5FA;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -182,6 +205,10 @@
         <div class="tabs">
             <a href="index.html" class="tab">My Signals</a>
             <a href="store.html" class="tab active">Signal Store</a>
+        </div>
+        
+        <div class="store-header">
+            <p class="store-info">Add or request signals on command and only pay for what you request. Your signals agreement can be found <a href="signals-agreement.html" class="agreement-link">here</a>.</p>
         </div>
 
         <div class="signal-grid">
@@ -376,10 +403,6 @@
                         Calculate the expected price movement for a stock over a single trading day based on current implied volatility and historical patterns. Essential for setting profit targets and stop losses.
                     </p>
 
-                    <div class="image-preview">
-                        <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Expected+Move+Chart" alt="One Day Expected Move Chart">
-                    </div>
-
                     <div class="signal-property">
                         <span class="property-label">Daily Delivery</span>
                         <div class="price-tag highlight">$35/day</div>
@@ -396,39 +419,7 @@
                 </div>
             </div>
 
-            <!-- Trade Entry vs Implied Volatility Signal -->
-            <div class="signal-card">
-                <div class="signal-header">
-                    <h2 class="signal-title">
-                        <i class="fas fa-exchange-alt"></i>
-                        Trade Entry vs Implied Volatility
-                        <span class="badge new">New</span>
-                    </h2>
-                </div>
-                <div class="signal-body">
-                    <p class="signal-description">
-                        Optimize your trade entries by comparing current implied volatility levels to historical ranges. Identify when options are relatively cheap or expensive to improve timing and strategy selection.
-                    </p>
 
-                    <div class="image-preview">
-                        <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Trade+Entry+vs+IV" alt="Trade Entry vs Implied Volatility Chart">
-                    </div>
-
-                    <div class="signal-property">
-                        <span class="property-label">Daily Delivery</span>
-                        <div class="price-tag highlight">$40/day</div>
-                    </div>
-
-                    <div class="signal-property">
-                        <span class="property-label">Instant Generation</span>
-                        <div class="price-tag">$70/signal</div>
-                    </div>
-
-                    <button class="subscribe-btn">
-                        <i class="fas fa-plus-circle"></i> Add to My Signals
-                    </button>
-                </div>
-            </div>
 
             <!-- Option Volatility Forecast Signal -->
             <div class="signal-card">
@@ -444,10 +435,6 @@
                     <p class="signal-description">
                         Predict future volatility based on historical realized volatility patterns. This advanced model helps identify potential volatility expansions and contractions before they occur.
                     </p>
-
-                    <div class="image-preview">
-                        <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=Volatility+Forecast" alt="Option Volatility Forecast Chart">
-                    </div>
 
                     <div class="signal-property">
                         <span class="property-label">Daily Delivery</span>
@@ -479,9 +466,35 @@
                         Compare current option prices against their historical implied volatility ranking to identify optimal entry points. Perfect for volatility-based strategies and premium sellers.
                     </p>
 
-                    <div class="image-preview">
-                        <img src="https://via.placeholder.com/300x150/374151/FFFFFF?text=IV+Rank+Analysis" alt="Trade Entry vs IV Rank Chart">
+                    <div class="signal-property">
+                        <span class="property-label">Daily Delivery</span>
+                        <div class="price-tag highlight">$45/day</div>
                     </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Instant Generation</span>
+                        <div class="price-tag">$75/signal</div>
+                    </div>
+
+                    <button class="subscribe-btn">
+                        <i class="fas fa-plus-circle"></i> Add to My Signals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Short 1 Week Long 1 Month Vol Spread Signal -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-compress-alt"></i>
+                        Short 1 Week Long 1 Month Vol Spread
+                        <span class="badge new">New</span>
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <p class="signal-description">
+                        Analyze the spread between short-term (1 week) and medium-term (1 month) implied volatility to identify volatility term structure anomalies and potential mean reversion opportunities.
+                    </p>
 
                     <div class="signal-property">
                         <span class="property-label">Daily Delivery</span>
@@ -491,6 +504,66 @@
                     <div class="signal-property">
                         <span class="property-label">Instant Generation</span>
                         <div class="price-tag">$75/signal</div>
+                    </div>
+
+                    <button class="subscribe-btn">
+                        <i class="fas fa-plus-circle"></i> Add to My Signals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Historical Realized Vol Signal -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-history"></i>
+                        Historical Realized Vol
+                        <span class="badge new">New</span>
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <p class="signal-description">
+                        Access comprehensive historical volatility data to understand how a stock's price has actually moved over various time periods. Essential for comparing implied vs. realized volatility.
+                    </p>
+
+                    <div class="signal-property">
+                        <span class="property-label">Daily Delivery</span>
+                        <div class="price-tag highlight">$40/day</div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Instant Generation</span>
+                        <div class="price-tag">$65/signal</div>
+                    </div>
+
+                    <button class="subscribe-btn">
+                        <i class="fas fa-plus-circle"></i> Add to My Signals
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tick Data Signal -->
+            <div class="signal-card">
+                <div class="signal-header">
+                    <h2 class="signal-title">
+                        <i class="fas fa-clock"></i>
+                        Tick Data
+                        <span class="badge premium">Premium</span>
+                    </h2>
+                </div>
+                <div class="signal-body">
+                    <p class="signal-description">
+                        Access high-frequency trading data with our premium tick-by-tick analysis. Identify microstructure patterns, order flow imbalances, and liquidity events that are invisible on standard charts.
+                    </p>
+
+                    <div class="signal-property">
+                        <span class="property-label">Daily Delivery</span>
+                        <div class="price-tag highlight">$55/day</div>
+                    </div>
+
+                    <div class="signal-property">
+                        <span class="property-label">Instant Generation</span>
+                        <div class="price-tag">$95/signal</div>
                     </div>
 
                     <button class="subscribe-btn">
