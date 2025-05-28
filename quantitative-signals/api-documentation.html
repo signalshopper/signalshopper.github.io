@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignalShopper - API Documentation</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <!-- Import Google Fonts to match main site -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Import Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            color: #F3F4F6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: white;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        h3 {
+            color: white;
+            font-weight: 500;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        p.subtitle {
+            color: #9CA3AF;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            color: #60A5FA;
+        }
+        .api-section {
+            background-color: #1F2937;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #374151;
+        }
+        pre {
+            background-color: #111827;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            color: #E5E7EB;
+            margin: 20px 0;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            background-color: #374151;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #E5E7EB;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #374151;
+        }
+        th {
+            background-color: #374151;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background-color: #1F2937;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Back to Signals Dashboard</a>
+            <h1>SignalShopper API Documentation</h1>
+            <p class="subtitle">Access quantitative signals programmatically via our REST API</p>
+        </header>
+
+        <div class="api-section">
+            <h2>Getting Started</h2>
+            <p>The SignalShopper API allows you to programmatically access all quantitative signals available in your dashboard. Each signal has its own unique API key that you'll use for authentication.</p>
+            
+            <h3>Base URL</h3>
+            <p>All API requests should be made to:</p>
+            <pre>https://api.signalshopper.com/v1</pre>
+            
+            <h3>Authentication</h3>
+            <p>Include your API key in the request header:</p>
+            <pre>Authorization: Bearer YOUR_API_KEY</pre>
+        </div>
+
+        <div class="api-section">
+            <h2>Endpoints</h2>
+            
+            <h3>Get Latest Signal</h3>
+            <p>Retrieve the most recent data for a specific signal.</p>
+            <pre>GET /signals/latest</pre>
+            
+            <h4>Example Request:</h4>
+            <pre>curl -X GET "https://api.signalshopper.com/v1/signals/latest" \
+-H "Authorization: Bearer sk_gamma_8f72hd92jd82h"</pre>
+            
+            <h4>Example Response:</h4>
+            <pre>{
+  "signal_id": "dealer_gamma",
+  "timestamp": "2025-05-28T14:30:00Z",
+  "data": {
+    "spx_gamma": 3.42,
+    "key_levels": [
+      {"price": 4250, "gamma": 5.67},
+      {"price": 4300, "gamma": 7.82},
+      {"price": 4350, "gamma": 4.21}
+    ],
+    "dealer_positioning": "net_long",
+    "market_impact": "moderate"
+  }
+}</pre>
+            
+            <h3>Get Historical Signals</h3>
+            <p>Retrieve historical data for a specific signal.</p>
+            <pre>GET /signals/history?days=7</pre>
+            
+            <h4>Parameters:</h4>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>days</td>
+                    <td>integer</td>
+                    <td>Number of days of historical data to retrieve (max: 30)</td>
+                </tr>
+                <tr>
+                    <td>start_date</td>
+                    <td>string</td>
+                    <td>Optional start date in ISO format (YYYY-MM-DD)</td>
+                </tr>
+                <tr>
+                    <td>end_date</td>
+                    <td>string</td>
+                    <td>Optional end date in ISO format (YYYY-MM-DD)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="api-section">
+            <h2>Rate Limits</h2>
+            <p>The API has the following rate limits:</p>
+            <ul>
+                <li>60 requests per minute</li>
+                <li>1000 requests per day</li>
+            </ul>
+            <p>If you exceed these limits, you'll receive a 429 Too Many Requests response.</p>
+        </div>
+
+        <div class="api-section">
+            <h2>Error Codes</h2>
+            <table>
+                <tr>
+                    <th>Status Code</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>400</td>
+                    <td>Bad Request - Invalid parameters</td>
+                </tr>
+                <tr>
+                    <td>401</td>
+                    <td>Unauthorized - Invalid API key</td>
+                </tr>
+                <tr>
+                    <td>403</td>
+                    <td>Forbidden - You don't have access to this signal</td>
+                </tr>
+                <tr>
+                    <td>429</td>
+                    <td>Too Many Requests - Rate limit exceeded</td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>Internal Server Error</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="api-section">
+            <h2>Need Help?</h2>
+            <p>If you have any questions or need assistance with the API, please contact our support team:</p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:api-support@signalshopper.com" style="color: #3B82F6; text-decoration: none;">api-support@signalshopper.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
